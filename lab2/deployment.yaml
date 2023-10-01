@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: itmo
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itdt-contained-frontend
+  namespace: itmo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.k8s/name: itdt-contained-frontend
+  template:
+    metadata:
+      labels:
+        app.k8s/name: itdt-contained-frontend
+    spec:
+      containers:
+        - name: itdt-contained-frontend
+          image: ifilyaninitmo/itdt-contained-frontend:master
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: REACT_APP_USERNAME
+              value: 'blinov.da'
+            - name: REACT_APP_COMPANY_NAME
+              value: 'itmo'
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: itdt-contained-frontend
+  namespace: itmo
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.k8s/name: itdt-contained-frontend
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: itdt-contained-frontend
+  namespace: itmo
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: app.itmo.blinov.da
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: itdt-contained-frontend
+                port:
+                  name: http
