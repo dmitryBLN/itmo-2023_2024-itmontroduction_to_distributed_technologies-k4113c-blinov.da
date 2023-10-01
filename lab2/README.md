@@ -34,3 +34,7 @@
  ![Alt text](source/image4.png)
  #### Pod: itdt-contained-frontend-658b58d9bb-b4m9w
  ![Alt text](source/image5.png)
+
+### 5. Схема
+
+![Alt text](source/image6.png)
