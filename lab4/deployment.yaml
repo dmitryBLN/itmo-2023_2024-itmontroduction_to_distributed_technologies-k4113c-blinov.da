@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: itmo
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: itmo
+data:
+  REACT_APP_USERNAME: 'blinov.da'
+  REACT_APP_COMPANY_NAME: 'itmo'
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itdt-contained-frontend
+  namespace: itmo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.k8s/name: itdt-contained-frontend
+  template:
+    metadata:
+      labels:
+        app.k8s/name: itdt-contained-frontend
+    spec:
+      containers:
+        - name: itdt-contained-frontend
+          image: ifilyaninitmo/itdt-contained-frontend:master
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: itdt-contained-frontend
+  namespace: itmo
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.k8s/name: itdt-contained-frontend

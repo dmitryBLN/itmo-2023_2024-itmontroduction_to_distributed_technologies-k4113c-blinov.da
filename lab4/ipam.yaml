@@ -1,0 +1,19 @@
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: node1
+spec:
+  cidr: 10.10.0.0/24
+  ipipMode: Always
+  natOutgoing: true
+  nodeSelector: nodeName == "node1"
+---
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: node2
+spec:
+  cidr: 10.10.1.0/24
+  ipipMode: Always
+  natOutgoing: true
+  nodeSelector: nodeName == "node2"

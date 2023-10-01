@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Node
+metadata:
+  name: minikube
+  labels:
+    nodeName: node1
+
+---
+
+apiVersion: v1
+kind: Node
+metadata:
+  name: minikube-m02
+  labels:
+    nodeName: node2
