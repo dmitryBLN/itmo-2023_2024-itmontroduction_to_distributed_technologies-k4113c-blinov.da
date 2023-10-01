@@ -1,4 +1,13 @@
-# itmo_distributed_systems_lab3
+University: [ITMO University](https://itmo.ru/ru/) \
+Faculty: [FICT](https://fict.itmo.ru) \
+Course: [Introduction to distributed technologies](https://github.com/itmo-ict-faculty/introduction-to-distributed-technologies) \
+Year: 2023/2024 \
+Group: K4113с \
+Author: Blinov Dmitry Andreevich \
+Lab: Lab3 \
+Date of create: 30.09.2023 \
+Date of finished: <none>
+#
 
 ### 1. Создание манифеста
  Директория содержит в себе файл `deployment.yaml`, в котором описана конфигурация развертывания веб-сервиса, файл содержит в себе создание 4-х объектов k8s: namespace, configMap, deployment, service и ingress.
@@ -6,6 +15,7 @@
  `Namespace` - пространство k8s, в котором будут создаваться наши последующие объекты, в данном примере он называется `itmo`.
  
  `ConfigMap` - файл конфигурации, содержащий в данном примере переменные окружения, которые буду применены к запускаемым контейнерам. В данном случае созданная configMap содержит в себе уже указанные переменные: `REACT_APP_USERNAME: 'blinov.da'` и `REACT_APP_COMPANY_NAME: 'itmo'`.
+ 
  `Deployment` содержит информацию об использованном образе, количестве реплик, порте и источнике конфигурации (configMap) веб-сервиса, на основе чего создает 2 реплики pod'а с веб-сервисом.
  
  `Service` управляет доступом в данные pod'ы и позволяет передавать в них запросы и получать данные.

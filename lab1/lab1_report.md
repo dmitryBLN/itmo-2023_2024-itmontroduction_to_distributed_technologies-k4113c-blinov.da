@@ -1,4 +1,13 @@
-# itmo_distributed_systems_lab1
+University: [ITMO University](https://itmo.ru/ru/) \
+Faculty: [FICT](https://fict.itmo.ru) \
+Course: [Introduction to distributed technologies](https://github.com/itmo-ict-faculty/introduction-to-distributed-technologies) \
+Year: 2023/2024 \
+Group: K4113с \
+Author: Blinov Dmitry Andreevich \
+Lab: Lab1 \
+Date of create: 27.09.2023 \
+Date of finished: <none>
+#
 
 ### 1. Запуск minikube
 ![Alt text](source/image1.png)

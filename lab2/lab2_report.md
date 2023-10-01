@@ -1,4 +1,13 @@
-# itmo_distributed_systems_lab2
+University: [ITMO University](https://itmo.ru/ru/) \
+Faculty: [FICT](https://fict.itmo.ru) \
+Course: [Introduction to distributed technologies](https://github.com/itmo-ict-faculty/introduction-to-distributed-technologies) \
+Year: 2023/2024 \
+Group: K4113с \
+Author: Blinov Dmitry Andreevich \
+Lab: Lab2 \
+Date of create: 30.09.2023 \
+Date of finished: <none>
+#
 
 ### Вводная часть
  Так-как целью данной лабораторной работы является показать возможности k8s по балансировке запросов, то для полноценной демонстрации данных возможностей понадобиться Ingress Controller, который бы принимал и обрабатывал внешние запросы. Поэтому для данной лабораторной я использовал уже готовый кластер k8s с развернутым Nginx Ingress Controller.
